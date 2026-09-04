@@ -1,4 +1,4 @@
-# [SIS-112] Programación I - UCB Santa Cruz
+# [SIS-112] Programación I (2-2026) - UCB Santa Cruz
 
 Repositorio para los proyectos y prácticas de la asignatura **[SIS-112] Programación I**, correspondiente a la carrera de **Ingeniería Industrial** en la **Universidad Católica Boliviana "San Pablo"** (Sede Santa Cruz).
 
