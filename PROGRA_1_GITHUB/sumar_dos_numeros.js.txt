@@ -1,0 +1,6 @@
+//INGRESE EL CODIGO AQUI
+
+Function suma (a,b) {
+
+return a + b
+}

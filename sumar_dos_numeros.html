@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora UCB</title>
+    <style>
+        /* Estilos generales y colores de la UCB */
+        :root {
+            --ucb-blue: #0033A0;
+            --ucb-yellow: #FFCC00;
+            --ucb-dark-blue: #002277;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-top: 6px solid var(--ucb-yellow);
+            width: 100%;
+            max-width: 350px;
+        }
+
+        h2 {
+            color: var(--ucb-blue);
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 80px;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            outline: none;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: var(--ucb-blue);
+        }
+
+        .operator {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--ucb-blue);
+        }
+
+        button {
+            background-color: var(--ucb-blue);
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: var(--ucb-dark-blue);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .resultado-box {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f0f4f8;
+            border-radius: 8px;
+            border-left: 5px solid var(--ucb-yellow);
+            color: var(--ucb-blue);
+            font-size: 18px;
+            display: none; /* Oculto hasta que se calcule */
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .resultado-valor {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--ucb-blue);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Suma Dinámica</h2>
+        
+        <div class="input-container">
+            <input type="number" id="valorA" placeholder="A" required>
+            <span class="operator">+</span>
+            <input type="number" id="valorB" placeholder="B" required>
+        </div>
+        
+        <button onclick="ejecutarSuma()">Calcular</button>
+
+        <div class="resultado-box" id="cajaResultado">
+            Resultado: <span class="resultado-valor" id="textoResultado">0</span>
+        </div>
+    </div>
+
+    <script>
+        // Tu código original
+        function suma(a, b) {
+            return a + b;
+        }
+
+        // Lógica dinámica para la interfaz
+        function ejecutarSuma() {
+            // 1. Obtener los valores ingresados en el HTML
+            const inputA = document.getElementById('valorA').value;
+            const inputB = document.getElementById('valorB').value;
+
+            // 2. Convertir el texto a números decimales (Float)
+            // Si el campo está vacío, se asume un 0
+            const numA = parseFloat(inputA) || 0;
+            const numB = parseFloat(inputB) || 0;
+
+            // 3. Llamar a tu función de suma
+            const resultado = suma(numA, numB);
+
+            // 4. Mostrar el resultado en pantalla de forma dinámica
+            const cajaResultado = document.getElementById('cajaResultado');
+            const textoResultado = document.getElementById('textoResultado');
+            
+            textoResultado.textContent = resultado;
+            cajaResultado.style.display = 'block'; // Hacer visible la caja
+        }
+    </script>
+</body>
+</html>
